@@ -42,3 +42,12 @@ let = arrayEntrada = arreglarEntrada(entrada)
 
 //console.log(arrayEntrada)
 
+N = arrayEntrada[0], K = arrayEntrada[1];
+
+const  validacion(N,K) => {
+    if(N <= 100 && N >= 1 && K >= 1 && K <= 10){
+        return true;
+    }else{
+        return false;
+    }
+}
