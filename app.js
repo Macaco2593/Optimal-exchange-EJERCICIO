@@ -37,12 +37,16 @@ function arreglarEntrada(entrada) {
     return entrada.split(" ").map(Number)
 }
 
+function arreglarEntrada(entrada) {
+    return entrada.split(" ").map(Number).slice(2)
+}
+
 const entrada = "100 6 1 2 5 10 20 50"
 let = arrayEntrada = arreglarEntrada(entrada)
 
 //console.log(arrayEntrada)
 
-N = arrayEntrada[0], K = arrayEntrada[1];
+let N = arrayEntrada[0], K = arrayEntrada[1], denominaciones = arreglarDenomiaciones(arrayEntrada(entrada));
 
 const  validacion(N,K) => {
     if(N <= 100 && N >= 1 && K >= 1 && K <= 10){
