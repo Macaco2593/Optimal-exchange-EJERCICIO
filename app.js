@@ -37,7 +37,7 @@ function arreglarEntrada(entrada) {
     return entrada.split(" ").map(Number)
 }
 
-function arreglarEntrada(entrada) {
+function arreglarDenominaciones(entrada) {
     return entrada.split(" ").map(Number).slice(2)
 }
 
@@ -46,12 +46,43 @@ let = arrayEntrada = arreglarEntrada(entrada)
 
 //console.log(arrayEntrada)
 
-let N = arrayEntrada[0], K = arrayEntrada[1], denominaciones = arreglarDenomiaciones(arrayEntrada(entrada));
-
-const  validacion(N,K) => {
+const  validacion = (N,K) => {
     if(N <= 100 && N >= 1 && K >= 1 && K <= 10){
         return true;
     }else{
         return false;
     }
 }
+
+let N = arrayEntrada[0], K = arrayEntrada[1], denominaciones = arreglarDenominaciones(entrada)
+
+function calcular(){
+
+    let capital=0, m=1, monedas=0, maxMonedas=0, totalMonedas = 0;
+
+    for(let i = 0; i<N; i++){
+        monedas = 0;
+        capital = i + 1
+        m=0
+        do {
+           if (capital - denominaciones[denominaciones.length -1 - m] < 0){
+            m++
+            
+           }else{
+            monedas++
+            capital-=denominaciones[denominaciones.length -1 - m];
+            if(monedas>maxMonedas){maxMonedas= monedas}
+           }
+
+        } while(capital > 0 && m < denominaciones.length)
+        totalMonedas +=monedas
+    }
+
+    let promedio = totalMonedas/N
+    console.log("Promedio de monedas usadas: ", promedio)
+    return maxMonedas;
+}
+
+console.log(denominaciones)
+const resultado = calcular()
+console.log(resultado)
