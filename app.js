@@ -58,23 +58,46 @@ let N = arrayEntrada[0], K = arrayEntrada[1], denominaciones = arreglarDenominac
 
 function calcular(){
 
-    let capital=0, m=1, monedas=0, maxMonedas=0, totalMonedas = 0;
+    let capital=0, m=0, monedas=0, maxMonedas=0, totalMonedas = 0;
 
     for(let i = 0; i<N; i++){
         monedas = 0;
         capital = i + 1
         m=0
+        let excedente = 0;
         do {
+            
            if (capital - denominaciones[denominaciones.length -1 - m] < 0){
             m++
             
            }else{
             monedas++
             capital-=denominaciones[denominaciones.length -1 - m];
+
+            if(capital < 0){
+                excedente+= Math.abs(capital);
+                capital = 0;
+            } else{
+                m++;
+            }
+
             if(monedas>maxMonedas){maxMonedas= monedas}
            }
 
         } while(capital > 0 && m < denominaciones.length)
+
+        if(excedente > 0){
+            let n = denominaciones.length -1;
+            while(excedente > 0 && n>=0){
+                if(excedente - denominaciones[n]>=0){
+                    monedas++;
+                    excedente -=denominaciones[n];
+                } else{
+                    n--;
+                }
+            }
+        }
+        
         totalMonedas +=monedas
     }
 
